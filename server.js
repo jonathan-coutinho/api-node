@@ -11,15 +11,15 @@ app.listen(port, () => {
     console.log (`Servidor rodando na porta ${port}`)
 })
 
-mongoose.connect ("mongodb+srv://api-node:!123456@cluster0-uwzef.mongodb.net/test?retryWrites=true&w=majority",{ useUnifiedTopology: true,useNewUrlParser: true })
+mongoose.connect ("mongodb+srv://api-node:!123456@cluster0-uwzef.mongodb.net/test?retryWrites=true&w=majority",{ useUnifiedTopology: true,useNewUrlParser: true,  useFindAndModify:false})
 app.use(Bodyparser.json())
 
-const user = {
+const users = {
 
 }
 
 
 
-app.use('/' , require("./src/routes"))
+app.use('/' , require("./src/routes.js"))
 
 //MONGODB
