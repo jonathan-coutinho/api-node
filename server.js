@@ -1,5 +1,6 @@
 const express = require('express')
 const Bodyparser = require('body-parser')
+const cors = require('cors')
 
 const mongoose = require('mongoose')
 
@@ -11,14 +12,15 @@ app.listen(port, () => {
     console.log (`Servidor rodando na porta ${port}`)
 })
 
-mongoose.connect ("mongodb+srv://api-node:!123456@cluster0-uwzef.mongodb.net/test?retryWrites=true&w=majority",{ useUnifiedTopology: true,useNewUrlParser: true,  useFindAndModify:false})
+mongoose.connect ("mongodb+srv://api-node:!123456@cluster0-uwzef.mongodb.net/test?retryWrites=true&w=majority",{
+     useUnifiedTopology: true,
+     useNewUrlParser: true,
+     useFindAndModify:false
+})
+
+
 app.use(Bodyparser.json())
-
-const users = {
-
-}
-
-
+app.use(cors())
 
 app.use('/' , require("./src/routes.js"))
 
