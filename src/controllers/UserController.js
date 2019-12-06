@@ -35,7 +35,7 @@ module.exports  = {
     async create (req,res) {
         try{
             const {nome,email,cargo} = req.body
-            const userexist = await User.find ({email})
+            const userexist = await User.findOne ({email})
 
             if (userexist) {
                 return res.status(401).json({error:"Já existe um usuário com este email"})
