@@ -38,7 +38,7 @@ module.exports  = {
             const userexist = await User.findOne ({email})
 
             if (userexist) {
-                return res.status(401).json({error:"Já existe um usuário com este email"})
+                return res.status(401).json({error:"Já existe um usuário com este email", user: userexist})
             }
             const user = await User.create ({nome,email,cargo})
             return res.status(201).json ({user})     
